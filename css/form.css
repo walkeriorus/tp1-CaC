@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #000000;
+}
+#main{
+    max-width: 960px;
+    margin: 0 auto;
+    width: 90%;
+    padding: 40px;
+    background-color: #fff;
+}
+#register-form{
+    border-radius: 10px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.glow-error{
+    filter: drop-shadow(0 0 5px red);
+}
+.glow-passed{
+    filter: drop-shadow(0 0 5px green);
+}
+.noVisible{
+    visibility: hidden;
+}
+.input{
+    width: 100%;
+	background: #fff;
+	/* border: 3px solid transparent; */
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+label{
+    display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+#submit{
+    grid-column: 1/3;
+    width: 30%;
+    justify-self: center;
+}
+button{
+    width: 100%;
+    height: 45px;
+	line-height: 45px;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+.grupo__checkboxes{
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.grupo__terminos{
+    grid-column: 1/3;
+}
