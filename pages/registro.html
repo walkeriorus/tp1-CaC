@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../css/form.css">
 </head>
-
 <body>
-    <header>
+    <header id="top-header">
+        <h1 class="inline-title">Sound Samples</h1>
+        <nav id="navbar">
+            <p id="loginButton" class="button">Login</p>
+            <form action="" id="loginForm" class="noMostrar">
+                <label for="login-user">Usuario</label>
+                <input type="text" id="login-user" name="login-user">
+                <label for="login-pass">Contraseña</label>
+                <input type="password" id="login-pass" name="login-pass">
+                <button type="submit">Iniciar Sesión</button>
+                <p id="login-error" class="noMostrar"></p>
+            </form>
+            <a href="../index.html" class="button">Ir al inicio</a ></nav>
     </header>
     <main id="main">
         <form action="" id="register-form" class="grid">
@@ -29,7 +40,7 @@
                 <input type="email" id="user-email" name="user-email" class="input">
                 <p class="noVisible msj-error" id="user-email-error"></p>
             </div>
-            <div class="grupo__checkboxes grid">
+            <div class="grupo__checkboxes grid" id="intereses">
                 <label for="bass">Bass</label>
                 <input type="checkbox" id="bass" value="bass" name="bass">
                 <label for="guitar">Guitar</label>
@@ -46,13 +57,15 @@
                 <input type="checkbox" id="soundEffects" value="soundEffects" name="soundEffects">
                 <label for="brass">Brass</label>
                 <input type="checkbox" id="brass" value="brass" name="brass">
+                <p class="noVisible msj-error" id="intereses-error">Selecciona al menos una opción.</p>
             </div>
             
             <div class="grupo__terminos">
-                <input type="checkbox" id="terminos" class="input">
+                <input type="checkbox" id="terminos" name='terminos' class="input">
                 <label for="terminos">
                     Acepto los terminos y condiciones
                 </label>
+                <p class="noVisible msj-error" id="terminos-error">Debe aceptar los terminos y condiciones</p>
             </div>
             
             <div id="submit">
@@ -61,6 +74,7 @@
         </form>
     </main>
     <script src="../js/form.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
