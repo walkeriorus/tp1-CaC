@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +9,20 @@
 </head>
 <body>
     <header id="top-header">
-        <nav><a href="/pages/registro.html">Registrarse</a></nav>
+        <h1 class="inline-title">Sound Samples</h1>
+        <nav id="navbar">
+            <p id="loginButton" class="button">Login</p>
+            <form action="" id="loginForm" class="noMostrar">
+                <label for="login-user">Usuario</label>
+                <input type="text" id="login-user" name="login-user">
+                <label for="login-pass">Contraseña</label>
+                <input type="password" id="login-pass" name="login-pass">
+                <button type="submit">Iniciar Sesión</button>
+                <p id="login-error" class="noMostrar"></p>
+            </form>
+            <a href="/pages/registro.html" class="button">Registrarse</a ></nav>
     </header>
-    <main id="mian"></main>
+    <main id="main"></main>
+    <script src="js/login.js"></script>
 </body>
 </html>
