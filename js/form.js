@@ -20,8 +20,15 @@ const validarIngresos = function( event ){
         case 'user-email':
             validarCampo(input);
             break
+            
     }
 
+}
+let datosUsuario = {
+    'user-name':null,
+    'user-pass': null,
+    'user-email':null,
+    'intereses': []
 }
 const validarCampo = function( input ) {
     let name = input.name;
@@ -31,6 +38,7 @@ const validarCampo = function( input ) {
         input.classList.add('glow-passed');
         input.classList.remove('glow-error');
         borrarMsjError( name );
+        datosUsuario[name] = valorActual;
     }
     else{
         input.classList.add('glow-error');
@@ -52,7 +60,9 @@ const mostrarMsjError = function( inputName ){
             break
         case 'user-email':
             p.innerText = 'Ingrese una dirección de correo válida.';
-            p.classList.remove('noVisible'); 
+            p.classList.remove('noVisible');
+            break
+
     }
 }
 const borrarMsjError = function( inputName ){
@@ -65,8 +75,60 @@ inputs.forEach( input => {
     input.addEventListener('blur',validarIngresos )
     }
 )
+const comprobarDatosUsuario = function(){
+    //devuelve false si algun campo no tiene valor
+    for( clave in datosUsuario ){
+        if( datosUsuario[clave] === null){
+            return false
+        }
+    }
+    return true
+}
+const guardarDatosUsuario = function(){
+    for( prop in datosUsuario ){
+        if(datosUsuario[prop] === null){
+            //si hay un null, ese campo esta vacío
+            return false
+        }
+    }
+    sessionStorage.setItem(datosUsuario['user-name'],JSON.stringify(datosUsuario))
+    return true
+    //si no encuentro ningún campo vacío, guardo el objeto datosUsuario en sessionStorage
 
+}
+
+const comprobarIntereses = function(){
+    let checkboxes = document.querySelectorAll('#intereses input[type="checkbox"]');
+    let marcados = 0;
+    for( checkbox of checkboxes){
+        if( checkbox.checked){
+            marcados +=1;
+            datosUsuario['intereses'].push( checkbox.value )
+        }
+    }
+    if( marcados === 0){
+        document.getElementById('intereses-error').classList.remove('noVisible');
+        return false
+    }
+    else{
+        document.getElementById('intereses-error').classList.add('noVisible');
+        return true
+    }
+}
 
 registerForm.addEventListener('submit', ( event )=>{
-    event.preventDefault();
-})
+    let terminos = document.getElementById('terminos').checked;
+    if( comprobarDatosUsuario() && comprobarIntereses() && terminos ){
+        if( sessionStorage.getItem(datosUsuario['user-name']) === null){
+            guardarDatosUsuario();
+            registerForm.reset();
+        }else{
+            event.preventDefault();
+        }
+
+    }else{
+            event.preventDefault();
+    }
+
+}
+)
