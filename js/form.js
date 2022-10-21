@@ -26,7 +26,8 @@ let datosUsuario = {
     'user-name': null,
     'user-pass': null,
     'user-email': null,
-    'intereses': []
+    'intereses': [],
+    'loggedIn': false
 }
 const validarCampo = function (input) {
     let name = input.name;
