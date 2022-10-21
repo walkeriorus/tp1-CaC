@@ -12,6 +12,7 @@
         <h1 class="inline-title">Sound Samples</h1>
         <nav id="navbar">
             <p id="loginButton" class="button">Login</p>
+            <p id="loggedUser" class="button noMostrar"></p>
             <form action="" id="loginForm" class="noMostrar">
                 <label for="login-user">Usuario</label>
                 <input type="text" id="login-user" name="login-user">
@@ -20,7 +21,9 @@
                 <button type="submit" class="button">Iniciar Sesión</button>
                 <p id="login-error" class="noMostrar"></p>
             </form>
-            <a href="/pages/registro.html" class="button">Registrarse</a ></nav>
+            <a href="/pages/registro.html" class="button" id="registerLink">Registrarse</a >
+            <p id="logOutButton" class="button noMostrar">Desconectarse</p>
+            </nav>
     </header>
     <main id="main"></main>
     <script src="js/login.js"></script>
