@@ -91,8 +91,21 @@ const detectarSesionIniciada = function(){
     //En este caso no habria ningun usuario con sesion iniciada, es decir su clave loggedIn != true
     return false
 }
+const logOut = function(){
+    mostrarElemento( document.getElementById('registerLink'),true);
+    mostrarElemento( document.getElementById('loggedUser'),false);
+    mostrarElemento( document.getElementById('logOutButton'),false);
+    mostrarElemento( document.getElementById('loginButton'),true);
+    let datosUsuario = JSON.parse( sessionStorage.getItem( document.getElementById('loggedUser').innerText ) )
+    datosUsuario.loggedIn = false;
+    sessionStorage.setItem( datosUsuario['user-name'], JSON.stringify(datosUsuario));
+}
 
+const logOutButton = document.getElementById('logOutButton');
 let loginButton = document.getElementById('loginButton');
-loginButton.addEventListener('click', mostrarLoginForm )
 let formularioInicio = document.getElementById('loginForm');
+
+//Event listeners
+loginButton.addEventListener('click', mostrarLoginForm );
+logOutButton.addEventListener('click', logOut );
 formularioInicio.addEventListener('submit', login )
