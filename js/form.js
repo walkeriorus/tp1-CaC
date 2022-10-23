@@ -149,8 +149,11 @@ const validarFormulario = function (event) {
     //Ver que todos los campos esten validados, revisando el objeto camposValidados
     if ( comprobarDatosUsuario() && comprobarCamposValidados() && comprobarIntereses() ) {
         if (sessionStorage.getItem(datosUsuario['user-name']) === null) {
+            event.preventDefault();
             guardarDatosUsuario();
-            registerForm.reset();
+            setTimeout(()=>{
+                window.location.assign( '../index.html');
+            },1000)
         } else {
             event.preventDefault();
         }
